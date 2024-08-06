@@ -1,0 +1,19 @@
+{
+  "name": "devblog-dataview-example",
+  "version": "0.1.0",
+  "author": "The WordPress Contributors",
+  "description": "Example with Admin menu option and dataviews",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "@wordpress/dataviews": "^4.0.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^28.3.0"
+  }
+}
