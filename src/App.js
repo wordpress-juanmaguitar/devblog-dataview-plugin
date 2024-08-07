@@ -1,6 +1,7 @@
 import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState } from "@wordpress/element";
 
+import "./index.scss";
 import { COUNCILS, PROVINCES } from "./data";
 
 const formatNumber = (number) => new Intl.NumberFormat("en-EN").format(number);

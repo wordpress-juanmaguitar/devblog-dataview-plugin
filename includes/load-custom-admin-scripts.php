@@ -34,6 +34,6 @@ function load_custom_wp_admin_scripts( $hook ) {
 
 	wp_enqueue_style(
 		'dataview-styles',
-		PLUGIN_DIR_URL . 'build/dataviews-style.css'
+		PLUGIN_DIR_URL . 'build/style-index.css'
 	);
 }
