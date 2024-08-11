@@ -122,7 +122,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     setPaginationInfo(paginationInfo);
   };
 
-  const onSuccessMediaUploadNotice = () => {
+  const onSuccessMediaUpload = () => {
     createNotice({
       status: "success",
       content: __("Image succesfully uploaded to Media Library!"),
@@ -130,7 +130,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     });
   };
 
-  const onErrorMediaUploadNotice = () => {
+  const onErrorMediaUpload = () => {
     createNotice({
       status: "error",
       content: __("An error occurred!"),
@@ -145,12 +145,15 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       label: "Upload Media",
       isPrimary: true,
       icon: "media-text",
-      callback: ([item]) => {
-        const urlImage = item.urls.raw;
+      callback: ([
+        {
+          urls: { raw: urlImage },
+        },
+      ]) => {
         uploadToMediaLibrary({
           urlImage,
-          onSuccessMediaUploadNotice,
-          onErrorMediaUploadNotice,
+          onSuccessMediaUpload,
+          onErrorMediaUpload,
         });
       },
     },

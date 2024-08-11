@@ -2,9 +2,6 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-
-import { store as noticesStore } from "@wordpress/notices";
-import { useDispatch } from "@wordpress/data";
 // https://developer.wordpress.org/block-editor/reference-guides/packages/packages-media-utils/#uploadmedia
 import { uploadMedia } from "@wordpress/media-utils";
 
@@ -14,7 +11,7 @@ import { uploadMedia } from "@wordpress/media-utils";
  * @param {*} name
  * @returns
  */
-const urlToObject = async (url, name = "test-upload.jpg") => {
+const urlToFileObject = async (url, name = "test-upload.jpg") => {
   const response = await fetch(url);
   // here image is url/location of image
   const blob = await response.blob();
@@ -35,20 +32,21 @@ const goToTop = () => {
 
 export const uploadToMediaLibrary = async ({
   urlImage,
-  onSuccessMediaUploadNotice,
-  onErrorMediaUploadNotice,
+  onSuccessMediaUpload,
+  onErrorMediaUpload,
 }) => {
-  const file = await urlToObject(urlImage);
+  const fileImage = await urlToFileObject(urlImage);
 
   uploadMedia({
-    filesList: [file],
+    filesList: [fileImage],
     onFileChange: async ([fileObj]) => {
-      if (!isBlobURL(fileObj.url)) {
-        onSuccessMediaUploadNotice();
+      if (isBlobURL(fileObj?.url)) {
+        return;
       }
+      onSuccessMediaUpload();
     },
     onError: (error) => {
-      onErrorMediaUploadNotice();
+      onErrorMediaUpload();
     },
   });
 
