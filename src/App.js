@@ -38,6 +38,12 @@ const DEFAULT_LAYOUTS = {
 const App = withNotices(({ noticeOperations, noticeUI }) => {
   const { createNotice } = noticeOperations;
 
+  const { hasUploadPermissions } = useSelect((select) => {
+    return {
+      hasUploadPermissions: select(coreStore).canUser("read", "media"),
+    };
+  });
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -141,6 +147,17 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
 
   const actions = [
     {
+      id: "see-original",
+      label: "See Original",
+      callback: ([item]) => {
+        const urlImage = item.urls.raw;
+        window.open(urlImage, "_blank");
+      },
+    },
+  ];
+
+  if (hasUploadPermissions) {
+    actions.push({
       id: "upload-media",
       label: "Upload Media",
       isPrimary: true,
@@ -153,16 +170,8 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
           onErrorMediaUpload,
         });
       },
-    },
-    {
-      id: "see-original",
-      label: "See Original",
-      callback: ([item]) => {
-        const urlImage = item.urls.raw;
-        window.open(urlImage, "_blank");
-      },
-    },
-  ];
+    });
+  }
 
   return (
     <>
