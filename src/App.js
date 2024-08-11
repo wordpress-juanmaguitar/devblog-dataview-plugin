@@ -10,11 +10,6 @@ import { Spinner } from "@wordpress/components";
 import "./style.css";
 import { PHOTOS, TOPICS } from "./data";
 
-// TODO
-// 1. [x] Fix showNotice
-// 2. [ ] Fix Bulk Actions and Selection
-// 3. [ ] User has permissions to upload media
-
 const primaryField = "id";
 const mediaField = "img_src";
 const badgeFields = ["topic"];
@@ -42,14 +37,6 @@ const DEFAULT_LAYOUTS = {
 
 const App = withNotices(({ noticeOperations, noticeUI }) => {
   const { createNotice } = noticeOperations;
-
-  /* we can use this to check if user has permissions to upload media */
-
-  // const { hasUploadPermissions } = useSelect((select) => {
-  //   return {
-  //     hasUploadPermissions: select(coreStore).canUser("read", "media"),
-  //   };
-  // });
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
