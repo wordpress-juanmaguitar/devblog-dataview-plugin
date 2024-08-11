@@ -1,96 +1,175 @@
 import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState } from "@wordpress/element";
+import { uploadToMediaLibrary } from "./utils";
+import { withNotices } from "@wordpress/components";
 
-import "./index.scss";
-import { COUNCILS, PROVINCES } from "./data";
+import { __ } from "@wordpress/i18n";
 
-const formatNumber = (number) => new Intl.NumberFormat("en-EN").format(number);
+import "./style.css";
+import { PHOTOS, TOPICS } from "./data";
 
-function App() {
-  const [data, setData] = useState(COUNCILS);
+// TODO
+// 1. [x] Fix showNotice
+// 2. [ ] Fix Bulk Actions and Selection
+// 3. [ ] User has permissions to upload media
+
+const primaryField = "id";
+const mediaField = "img_src";
+const badgeFields = ["topic"];
+
+const DEFAULT_LAYOUTS = {
+  table: {
+    layout: {
+      primaryField,
+    },
+  },
+  grid: {
+    layout: {
+      primaryField,
+      mediaField,
+      badgeFields,
+    },
+  },
+  list: {
+    layout: {
+      primaryField,
+      mediaField,
+    },
+  },
+};
+
+const App = withNotices(({ noticeOperations, noticeUI }) => {
+  const { createNotice } = noticeOperations;
+  const [data, setData] = useState([]);
 
   const [paginationInfo, setPaginationInfo] = useState({
     totalItems: 0,
     totalPages: 0,
   });
-  const defaultLayouts = {
-    table: {
-      layout: {
-        primaryField: "name",
-      },
-    },
-    grid: {
-      layout: {
-        primaryField: "name",
-        mediaField: "img_src",
-        badgeFields: ["province"],
-      },
-    },
-    list: {
-      layout: {
-        primaryField: "name",
-        mediaField: "img_src",
-      },
-    },
-  };
+
   const [view, setView] = useState({
     type: "table",
     perPage: 10,
-    layout: defaultLayouts.table.layout,
+    layout: DEFAULT_LAYOUTS.table.layout,
   });
 
   const fields = [
     {
+      label: "Image",
       id: "img_src",
-      header: "Image",
       render: ({ item }) => (
-        <a title={item.img_author} href={item.img_url}>
-          <img width="50" alt={""} src={item.img_src} />
-        </a>
+        <img alt={item.alt_description} src={item.urls.thumb} />
       ),
       enableSorting: false,
     },
     {
-      id: "name",
-      header: "Name",
+      label: "Author",
+      id: "author",
+      getValue: ({ item }) => `${item.user.first_name} ${item.user.last_name}`,
+      render: ({ item }) => (
+        <a target="_blank" href={item.user.url}>
+          {item.user.first_name} {item.user.last_name}
+        </a>
+      ),
       enableGlobalSearch: true,
     },
     {
-      id: "province",
-      header: "Province",
+      id: "id",
+      label: "ID",
       enableGlobalSearch: true,
-      elements: PROVINCES,
     },
     {
-      id: "population",
-      header: "Population",
-      render: ({ item }) => formatNumber(item.population),
+      id: "alt_description",
+      label: "Description",
+      enableGlobalSearch: true,
     },
     {
-      id: "km_2",
-      header: "Area (km²)",
-      render: ({ item }) => formatNumber(item.km_2),
+      id: "topic",
+      label: "Topic",
+      elements: TOPICS,
+      render: ({ item }) => {
+        return (
+          <div class="topic_photos">
+            {item.topics.map((topic) => (
+              <span class="topic_photo_item">{topic.toUpperCase()}</span>
+            ))}
+          </div>
+        );
+      },
+      filterBy: {
+        operators: ["isAny"],
+      },
+      enableSorting: false,
+    },
+    {
+      id: "width",
+      label: "Width",
+    },
+    {
+      id: "height",
+      label: "Height",
     },
   ];
 
-  const onChangeView = (newView) => {
-    const { data: newData, paginationInfo: newPaginationInfo } =
-      filterSortAndPaginate(COUNCILS, newView, fields);
-    setView(newView);
-    setData(newData);
-    setPaginationInfo(newPaginationInfo);
+  const onChangeView = (view) => {
+    const { data, paginationInfo } = filterSortAndPaginate(
+      PHOTOS,
+      view,
+      fields
+    );
+    setView(view);
+    setData(data);
+    setPaginationInfo(paginationInfo);
   };
 
+  const onSuccessMediaUploadNotice = () => {
+    createNotice({
+      status: "success",
+      content: __("Image succesfully uploaded to Media Library!"),
+      isDismissible: true,
+    });
+  };
+
+  const onErrorMediaUploadNotice = () => {
+    createNotice({
+      status: "error",
+      content: __("An error occurred!"),
+      type: "snackbar",
+      explicitDismiss: true,
+    });
+  };
+
+  const actions = [
+    {
+      id: "upload-media",
+      label: "Upload Media",
+      isPrimary: true,
+      icon: "media-text",
+      callback: ([item]) => {
+        const urlImage = item.urls.raw;
+        uploadToMediaLibrary({
+          urlImage,
+          onSuccessMediaUploadNotice,
+          onErrorMediaUploadNotice,
+        });
+      },
+    },
+  ];
+
   return (
-    <DataViews
-      data={data}
-      fields={fields}
-      view={view}
-      onChangeView={onChangeView}
-      defaultLayouts={defaultLayouts}
-      paginationInfo={paginationInfo}
-    />
+    <>
+      {noticeUI}
+      <DataViews
+        data={data}
+        fields={fields}
+        view={view}
+        actions={actions}
+        onChangeView={onChangeView}
+        defaultLayouts={DEFAULT_LAYOUTS}
+        paginationInfo={paginationInfo}
+      />
+    </>
   );
-}
+});
 
 export default App;
