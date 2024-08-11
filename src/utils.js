@@ -11,8 +11,10 @@ import { uploadMedia } from "@wordpress/media-utils";
  * @param {*} name
  * @returns
  */
-const urlToFileObject = async (url, name = "test-upload.jpg") => {
-  const response = await fetch(url);
+const urlToFileObject = async (image) => {
+  const urlImage = image.urls.raw;
+  const name = `${image.slug}.jpg`;
+  const response = await fetch(urlImage);
   // here image is url/location of image
   const blob = await response.blob();
   const file = new File([blob], name, { type: blob.type });
@@ -31,11 +33,11 @@ const goToTop = () => {
 };
 
 export const uploadToMediaLibrary = async ({
-  urlImage,
+  image,
   onSuccessMediaUpload,
   onErrorMediaUpload,
 }) => {
-  const fileImage = await urlToFileObject(urlImage);
+  const fileImage = await urlToFileObject(image);
 
   uploadMedia({
     filesList: [fileImage],
@@ -43,7 +45,7 @@ export const uploadToMediaLibrary = async ({
       if (isBlobURL(fileObj?.url)) {
         return;
       }
-      onSuccessMediaUpload();
+      onSuccessMediaUpload(fileObj);
     },
     onError: (error) => {
       onErrorMediaUpload();

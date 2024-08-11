@@ -2,8 +2,10 @@ import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState } from "@wordpress/element";
 import { uploadToMediaLibrary } from "./utils";
 import { withNotices } from "@wordpress/components";
-
+import { store as coreStore } from "@wordpress/core-data";
+import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
+import { Spinner } from "@wordpress/components";
 
 import "./style.css";
 import { PHOTOS, TOPICS } from "./data";
@@ -40,7 +42,17 @@ const DEFAULT_LAYOUTS = {
 
 const App = withNotices(({ noticeOperations, noticeUI }) => {
   const { createNotice } = noticeOperations;
+
+  /* we can use this to check if user has permissions to upload media */
+
+  // const { hasUploadPermissions } = useSelect((select) => {
+  //   return {
+  //     hasUploadPermissions: select(coreStore).canUser("read", "media"),
+  //   };
+  // });
+
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [paginationInfo, setPaginationInfo] = useState({
     totalItems: 0,
@@ -122,11 +134,12 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     setPaginationInfo(paginationInfo);
   };
 
-  const onSuccessMediaUpload = () => {
+  const onSuccessMediaUpload = ({ slug }) => {
+    setIsLoading(false);
     createNotice({
       status: "success",
-      content: __("Image succesfully uploaded to Media Library!"),
-      isDismissible: true,
+      content: __(`${slug}.jpg succesfully uploaded to Media Library!`),
+      explicitDismiss: true,
     });
   };
 
@@ -144,23 +157,29 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       id: "upload-media",
       label: "Upload Media",
       isPrimary: true,
-      icon: "media-text",
-      callback: ([
-        {
-          urls: { raw: urlImage },
-        },
-      ]) => {
+      icon: "upload",
+      callback: ([image]) => {
+        setIsLoading(true);
         uploadToMediaLibrary({
-          urlImage,
+          image,
           onSuccessMediaUpload,
           onErrorMediaUpload,
         });
+      },
+    },
+    {
+      id: "see-original",
+      label: "See Original",
+      callback: ([item]) => {
+        const urlImage = item.urls.raw;
+        window.open(urlImage, "_blank");
       },
     },
   ];
 
   return (
     <>
+      {isLoading && <Spinner />}
       {noticeUI}
       <DataViews
         data={data}

@@ -8,7 +8,7 @@ namespace DevBlogDataviewsExample;
  */
 function load_custom_wp_admin_scripts( $hook ) {
 	// Load only on ?page=my-custom-dataview-app.
-	if ( 'toplevel_page_my-custom-dataview-app' !== $hook ) {
+	if ( 'media_page_my-custom-dataview-app' !== $hook ) {
 		return;
 	}
 

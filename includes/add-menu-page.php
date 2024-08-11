@@ -8,15 +8,13 @@ namespace DevBlogDataviewsExample;
  * @return void
  */
 function my_admin_menu() {
-	add_menu_page(
-		__( 'My custom Dataview app', 'dev-blog-dataviews-example' ),
-		__( 'My custom Dataview app', 'dev-blog-dataviews-example' ),
+	add_media_page(
+		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
+		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
 		'manage_options',
 		'my-custom-dataview-app',
 		function () {
-			echo '<h2>Dataview</h2><div id="my-custom-dataview-app"></div>';
-		},
-		'dashicons-schedule',
-		3
+			echo '<h2>Add Media from third party service</h2><div id="my-custom-dataview-app"></div>';
+		}
 	);
 }
