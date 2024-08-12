@@ -1,10 +1,6 @@
 @import "@wordpress/dataviews/build-style/style.css";
 
-.topic_photos {
-  display: flex;
-  flex-wrap: wrap;
-}
-.topic_photo_item {
+.category_photo_item {
   background-color: grey;
   color: white;
   padding: 2px;

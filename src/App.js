@@ -8,11 +8,11 @@ import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
 import "./style.css";
-import { PHOTOS, TOPICS } from "./data";
+import { PHOTOS, CATEGORIES } from "./data";
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["topic"];
+const badgeFields = ["category"];
 
 const DEFAULT_LAYOUTS = {
   table: {
@@ -83,16 +83,12 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       enableGlobalSearch: true,
     },
     {
-      id: "topic",
-      label: "Topic",
-      elements: TOPICS,
+      id: "category",
+      label: "Category",
+      elements: CATEGORIES,
       render: ({ item }) => {
         return (
-          <div class="topic_photos">
-            {item.topics.map((topic) => (
-              <span class="topic_photo_item">{topic.toUpperCase()}</span>
-            ))}
-          </div>
+          <span class="category_photo_item">{item.category.toUpperCase()}</span>
         );
       },
       filterBy: {
