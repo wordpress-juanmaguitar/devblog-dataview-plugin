@@ -2,8 +2,6 @@ import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState } from "@wordpress/element";
 import { uploadToMediaLibrary } from "./utils";
 import { withNotices } from "@wordpress/components";
-import { store as coreStore } from "@wordpress/core-data";
-import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
