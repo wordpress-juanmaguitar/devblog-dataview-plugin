@@ -811,32 +811,6 @@ export const PHOTOS = [
     },
   },
   {
-    id: "t51VWizdGqY",
-    slug: "the-sun-is-setting-over-the-mountains-in-the-desert-t51VWizdGqY",
-    width: 5142,
-    color: "#260c0c",
-    height: 2892,
-    alt_description: "The sun is setting over the mountains in the desert",
-    urls: {
-      raw: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3",
-      full: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=85",
-      regular:
-        "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=1080",
-      small:
-        "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=400",
-      thumb:
-        "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=200",
-      small_s3:
-        "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722973893256-85f1e22dc770",
-    },
-    topics: ["spirituality", "travel", "nature", "wallpapers"],
-    user: {
-      first_name: "Marek",
-      last_name: "Piwnicki",
-      url: "https://marpiwnicki.github.io",
-    },
-  },
-  {
     id: "vJJ5PtWymSY",
     slug: "a-view-of-a-valley-with-a-mountain-in-the-background-vJJ5PtWymSY",
     width: 5472,

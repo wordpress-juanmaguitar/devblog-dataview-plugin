@@ -1,5 +1,5 @@
 import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
-import { useState } from "@wordpress/element";
+import { useState, useMemo } from "@wordpress/element";
 import { uploadToMediaLibrary } from "./utils";
 import { withNotices } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
@@ -10,7 +10,7 @@ import { PHOTOS, TOPICS } from "./data";
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["category"];
+const badgeFields = ["topics"];
 
 const DEFAULT_LAYOUTS = {
   table: {
@@ -33,91 +33,81 @@ const DEFAULT_LAYOUTS = {
   },
 };
 
+const FIELDS = [
+  {
+    label: "Image",
+    id: "img_src",
+    render: ({ item }) => (
+      <img alt={item.alt_description} src={item.urls.thumb} />
+    ),
+    enableSorting: false,
+  },
+  {
+    id: "id",
+    label: "ID",
+    enableGlobalSearch: true,
+  },
+  {
+    label: "Author",
+    id: "author",
+    getValue: ({ item }) => `${item.user.first_name} ${item.user.last_name}`,
+    render: ({ item }) => (
+      <a target="_blank" href={item.user.url}>
+        {item.user.first_name} {item.user.last_name}
+      </a>
+    ),
+    enableGlobalSearch: true,
+  },
+  {
+    id: "alt_description",
+    label: "Description",
+    enableGlobalSearch: true,
+  },
+  {
+    id: "topics",
+    label: "Topics",
+    elements: TOPICS,
+    filterBy: {
+      operators: ["isAny", "isNone", "isAll", "isNotAll"],
+    },
+    enableSorting: false,
+  },
+  {
+    id: "width",
+    label: "Width",
+    getValue: ({ item }) => parseInt(item.width),
+    enableSorting: true,
+  },
+  {
+    id: "height",
+    label: "Height",
+    getValue: ({ item }) => parseInt(item.height),
+    enableSorting: true,
+  },
+];
 const App = withNotices(({ noticeOperations, noticeUI }) => {
   const { createNotice } = noticeOperations;
 
-  const [data, setData] = useState([]);
   const [isUploadingItems, setIsUploadingItems] = useState([]);
-
-  const [paginationInfo, setPaginationInfo] = useState({
-    totalItems: 0,
-    totalPages: 0,
-  });
 
   const [view, setView] = useState({
     type: "table",
     perPage: 10,
     layout: DEFAULT_LAYOUTS.table.layout,
+    fields: [
+      "img_src",
+      "id",
+      "alt_description",
+      "author",
+      "topics",
+      "width",
+      "height",
+    ],
   });
 
-  const fields = [
-    {
-      label: "Image",
-      id: "img_src",
-      render: ({ item }) => (
-        <img alt={item.alt_description} src={item.urls.thumb} />
-      ),
-      enableSorting: false,
-    },
-    {
-      label: "Author",
-      id: "author",
-      getValue: ({ item }) => `${item.user.first_name} ${item.user.last_name}`,
-      render: ({ item }) => (
-        <a target="_blank" href={item.user.url}>
-          {item.user.first_name} {item.user.last_name}
-        </a>
-      ),
-      enableGlobalSearch: true,
-    },
-    {
-      id: "id",
-      label: "ID",
-      enableGlobalSearch: true,
-    },
-    {
-      id: "alt_description",
-      label: "Description",
-      enableGlobalSearch: true,
-    },
-    {
-      id: "topics",
-      label: "Topics",
-      elements: TOPICS,
-      render: ({ item }) => {
-        return (
-          <div class="topic_photos">
-            {item.topics.map((topic) => (
-              <span class="topic_photo_item">{topic.toUpperCase()}</span>
-            ))}
-          </div>
-        );
-      },
-      filterBy: {
-        operators: ["isAny", "isNone", "isAll", "isNotAll"],
-      },
-      enableSorting: false,
-    },
-    {
-      id: "width",
-      label: "Width",
-    },
-    {
-      id: "height",
-      label: "Height",
-    },
-  ];
-
-  const onChangeView = (view) => {
-    const { data, paginationInfo } = filterSortAndPaginate(
-      PHOTOS,
-      view,
-      fields
-    );
-    setView(view);
-    setData(data);
-    setPaginationInfo(paginationInfo);
-  };
+  const { data, paginationInfo } = useMemo(() => {
+    return filterSortAndPaginate(PHOTOS, view, FIELDS);
+  }, [PHOTOS, view, FIELDS]);
 
   const onSuccessMediaUpload = ({ title }) => {
     setIsUploadingItems((prevIsUploadingItems) =>
@@ -147,7 +137,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       label: "Upload Media",
       isPrimary: true,
       icon: "upload",
-      supportsBulk: true,
+      // supportsBulk: true,
       callback: (images) => {
         images.forEach((image) => {
           setIsUploadingItems((prevIsUploadingItems) => [
@@ -177,10 +167,10 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       {noticeUI}
       <DataViews
         data={data}
-        fields={fields}
+        fields={FIELDS}
         view={view}
         actions={actions}
-        onChangeView={onChangeView}
+        onChangeView={setView}
         defaultLayouts={DEFAULT_LAYOUTS}
         paginationInfo={paginationInfo}
       />

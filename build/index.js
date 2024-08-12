@@ -5099,7 +5099,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["category"];
+const badgeFields = ["topics"];
 const DEFAULT_LAYOUTS = {
   table: {
     layout: {
@@ -5120,6 +5120,61 @@ const DEFAULT_LAYOUTS = {
     }
   }
 };
+const FIELDS = [{
+  label: "Image",
+  id: "img_src",
+  render: ({
+    item
+  }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+    alt: item.alt_description,
+    src: item.urls.thumb
+  }),
+  enableSorting: false
+}, {
+  id: "id",
+  label: "ID",
+  enableGlobalSearch: true
+}, {
+  label: "Author",
+  id: "author",
+  getValue: ({
+    item
+  }) => `${item.user.first_name} ${item.user.last_name}`,
+  render: ({
+    item
+  }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
+    target: "_blank",
+    href: item.user.url,
+    children: [item.user.first_name, " ", item.user.last_name]
+  }),
+  enableGlobalSearch: true
+}, {
+  id: "alt_description",
+  label: "Description",
+  enableGlobalSearch: true
+}, {
+  id: "topics",
+  label: "Topics",
+  elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
+  filterBy: {
+    operators: ["isAny", "isNone", "isAll", "isNotAll"]
+  },
+  enableSorting: false
+}, {
+  id: "width",
+  label: "Width",
+  getValue: ({
+    item
+  }) => parseInt(item.width),
+  enableSorting: true
+}, {
+  id: "height",
+  label: "Height",
+  getValue: ({
+    item
+  }) => parseInt(item.height),
+  enableSorting: true
+}];
 const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)(({
   noticeOperations,
   noticeUI
@@ -5127,84 +5182,19 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
   const {
     createNotice
   } = noticeOperations;
-  const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [isUploadingItems, setIsUploadingItems] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [paginationInfo, setPaginationInfo] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    totalItems: 0,
-    totalPages: 0
-  });
   const [view, setView] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
     type: "table",
     perPage: 10,
-    layout: DEFAULT_LAYOUTS.table.layout
+    layout: DEFAULT_LAYOUTS.table.layout,
+    fields: ["img_src", "id", "alt_description", "author", "topics", "width", "height"]
   });
-  const fields = [{
-    label: "Image",
-    id: "img_src",
-    render: ({
-      item
-    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-      alt: item.alt_description,
-      src: item.urls.thumb
-    }),
-    enableSorting: false
-  }, {
-    label: "Author",
-    id: "author",
-    getValue: ({
-      item
-    }) => `${item.user.first_name} ${item.user.last_name}`,
-    render: ({
-      item
-    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
-      target: "_blank",
-      href: item.user.url,
-      children: [item.user.first_name, " ", item.user.last_name]
-    }),
-    enableGlobalSearch: true
-  }, {
-    id: "id",
-    label: "ID",
-    enableGlobalSearch: true
-  }, {
-    id: "alt_description",
-    label: "Description",
-    enableGlobalSearch: true
-  }, {
-    id: "topics",
-    label: "Topics",
-    elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
-    render: ({
-      item
-    }) => {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        class: "topic_photos",
-        children: item.topics.map(topic => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-          class: "topic_photo_item",
-          children: topic.toUpperCase()
-        }))
-      });
-    },
-    filterBy: {
-      operators: ["isAny", "isNone", "isAll", "isNotAll"]
-    },
-    enableSorting: false
-  }, {
-    id: "width",
-    label: "Width"
-  }, {
-    id: "height",
-    label: "Height"
-  }];
-  const onChangeView = view => {
-    const {
-      data,
-      paginationInfo
-    } = (0,_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_7__.filterSortAndPaginate)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, fields);
-    setView(view);
-    setData(data);
-    setPaginationInfo(paginationInfo);
-  };
+  const {
+    data,
+    paginationInfo
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return (0,_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_7__.filterSortAndPaginate)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, FIELDS);
+  }, [_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, FIELDS]);
   const onSuccessMediaUpload = ({
     title
   }) => {
@@ -5229,7 +5219,7 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
     label: "Upload Media",
     isPrimary: true,
     icon: "upload",
-    supportsBulk: true,
+    // supportsBulk: true,
     callback: images => {
       images.forEach(image => {
         setIsUploadingItems(prevIsUploadingItems => [...prevIsUploadingItems, image.slug]);
@@ -5251,10 +5241,10 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: [!!isUploadingItems.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {}), noticeUI, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_8__["default"], {
       data: data,
-      fields: fields,
+      fields: FIELDS,
       view: view,
       actions: actions,
-      onChangeView: onChangeView,
+      onChangeView: setView,
       defaultLayouts: DEFAULT_LAYOUTS,
       paginationInfo: paginationInfo
     })]
@@ -5930,27 +5920,6 @@ const PHOTOS = [{
     first_name: "Slava",
     last_name: "Auchynnikau",
     url: "http://instagram.com/auchynnikau"
-  }
-}, {
-  id: "t51VWizdGqY",
-  slug: "the-sun-is-setting-over-the-mountains-in-the-desert-t51VWizdGqY",
-  width: 5142,
-  color: "#260c0c",
-  height: 2892,
-  alt_description: "The sun is setting over the mountains in the desert",
-  urls: {
-    raw: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3",
-    full: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=85",
-    regular: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=1080",
-    small: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=400",
-    thumb: "https://images.unsplash.com/photo-1722973893256-85f1e22dc770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNjgzM3wwfDF8dG9waWN8fDZzTVZqVExTa2VRfHx8fHx8fDE3MjMyNzQ5Mzd8&ixlib=rb-4.0.3&q=80&w=200",
-    small_s3: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722973893256-85f1e22dc770"
-  },
-  topics: ["spirituality", "travel", "nature", "wallpapers"],
-  user: {
-    first_name: "Marek",
-    last_name: "Piwnicki",
-    url: "https://marpiwnicki.github.io"
   }
 }, {
   id: "vJJ5PtWymSY",

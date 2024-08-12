@@ -1175,15 +1175,8 @@
 /*!*******************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/style.css ***!
   \*******************************************************************************************************************************************************************/
-.topic_photos {
-  display: flex;
-  flex-wrap: wrap;
-}
-.topic_photo_item {
-  background-color: grey;
-  color: white;
-  padding: 2px;
-  margin: 2px;
+#add-media-from-third-party-service {
+  background: white;
 }
 
 
