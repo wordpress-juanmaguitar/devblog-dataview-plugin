@@ -43,6 +43,11 @@ const FIELDS = [
     enableSorting: false,
   },
   {
+    id: "id",
+    label: "ID",
+    enableGlobalSearch: true,
+  },
+  {
     label: "Author",
     id: "author",
     getValue: ({ item }) => `${item.user.first_name} ${item.user.last_name}`,
@@ -51,11 +56,6 @@ const FIELDS = [
         {item.user.first_name} {item.user.last_name}
       </a>
     ),
-    enableGlobalSearch: true,
-  },
-  {
-    id: "id",
-    label: "ID",
     enableGlobalSearch: true,
   },
   {
@@ -76,11 +76,13 @@ const FIELDS = [
     id: "width",
     label: "Width",
     getValue: ({ item }) => parseInt(item.width),
+    enableSorting: true,
   },
   {
     id: "height",
     label: "Height",
     getValue: ({ item }) => parseInt(item.height),
+    enableSorting: true,
   },
 ];
 const App = withNotices(({ noticeOperations, noticeUI }) => {
@@ -92,6 +94,15 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     type: "table",
     perPage: 10,
     layout: DEFAULT_LAYOUTS.table.layout,
+    fields: [
+      "img_src",
+      "id",
+      "alt_description",
+      "author",
+      "topics",
+      "width",
+      "height",
+    ],
   });
 
   const { data, paginationInfo } = useMemo(() => {
@@ -126,7 +137,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       label: "Upload Media",
       isPrimary: true,
       icon: "upload",
-      supportsBulk: true,
+      // supportsBulk: true,
       callback: (images) => {
         images.forEach((image) => {
           setIsUploadingItems((prevIsUploadingItems) => [
