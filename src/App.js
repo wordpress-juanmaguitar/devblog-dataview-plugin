@@ -22,7 +22,7 @@ const DEFAULT_LAYOUTS = {
     layout: {
       primaryField,
       mediaField,
-      badgeFields,
+      // badgeFields,
     },
   },
   list: {
