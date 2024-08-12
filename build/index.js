@@ -5099,7 +5099,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["category"];
+const badgeFields = ["topics"];
 const DEFAULT_LAYOUTS = {
   table: {
     layout: {
@@ -5120,6 +5120,59 @@ const DEFAULT_LAYOUTS = {
     }
   }
 };
+const FIELDS = [{
+  label: "Image",
+  id: "img_src",
+  render: ({
+    item
+  }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+    alt: item.alt_description,
+    src: item.urls.thumb
+  }),
+  enableSorting: false
+}, {
+  label: "Author",
+  id: "author",
+  getValue: ({
+    item
+  }) => `${item.user.first_name} ${item.user.last_name}`,
+  render: ({
+    item
+  }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
+    target: "_blank",
+    href: item.user.url,
+    children: [item.user.first_name, " ", item.user.last_name]
+  }),
+  enableGlobalSearch: true
+}, {
+  id: "id",
+  label: "ID",
+  enableGlobalSearch: true
+}, {
+  id: "alt_description",
+  label: "Description",
+  enableGlobalSearch: true
+}, {
+  id: "topics",
+  label: "Topics",
+  elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
+  filterBy: {
+    operators: ["isAny", "isNone", "isAll", "isNotAll"]
+  },
+  enableSorting: false
+}, {
+  id: "width",
+  label: "Width",
+  getValue: ({
+    item
+  }) => parseInt(item.width)
+}, {
+  id: "height",
+  label: "Height",
+  getValue: ({
+    item
+  }) => parseInt(item.height)
+}];
 const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)(({
   noticeOperations,
   noticeUI
@@ -5127,84 +5180,18 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
   const {
     createNotice
   } = noticeOperations;
-  const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [isUploadingItems, setIsUploadingItems] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [paginationInfo, setPaginationInfo] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    totalItems: 0,
-    totalPages: 0
-  });
   const [view, setView] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
     type: "table",
     perPage: 10,
     layout: DEFAULT_LAYOUTS.table.layout
   });
-  const fields = [{
-    label: "Image",
-    id: "img_src",
-    render: ({
-      item
-    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-      alt: item.alt_description,
-      src: item.urls.thumb
-    }),
-    enableSorting: false
-  }, {
-    label: "Author",
-    id: "author",
-    getValue: ({
-      item
-    }) => `${item.user.first_name} ${item.user.last_name}`,
-    render: ({
-      item
-    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
-      target: "_blank",
-      href: item.user.url,
-      children: [item.user.first_name, " ", item.user.last_name]
-    }),
-    enableGlobalSearch: true
-  }, {
-    id: "id",
-    label: "ID",
-    enableGlobalSearch: true
-  }, {
-    id: "alt_description",
-    label: "Description",
-    enableGlobalSearch: true
-  }, {
-    id: "topics",
-    label: "Topics",
-    elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
-    render: ({
-      item
-    }) => {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        class: "topic_photos",
-        children: item.topics.map(topic => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-          class: "topic_photo_item",
-          children: topic.toUpperCase()
-        }))
-      });
-    },
-    filterBy: {
-      operators: ["isAny", "isNone", "isAll", "isNotAll"]
-    },
-    enableSorting: false
-  }, {
-    id: "width",
-    label: "Width"
-  }, {
-    id: "height",
-    label: "Height"
-  }];
-  const onChangeView = view => {
-    const {
-      data,
-      paginationInfo
-    } = (0,_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_7__.filterSortAndPaginate)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, fields);
-    setView(view);
-    setData(data);
-    setPaginationInfo(paginationInfo);
-  };
+  const {
+    data,
+    paginationInfo
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return (0,_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_7__.filterSortAndPaginate)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, FIELDS);
+  }, [_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS, view, FIELDS]);
   const onSuccessMediaUpload = ({
     title
   }) => {
@@ -5251,10 +5238,10 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: [!!isUploadingItems.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {}), noticeUI, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_dataviews__WEBPACK_IMPORTED_MODULE_8__["default"], {
       data: data,
-      fields: fields,
+      fields: FIELDS,
       view: view,
       actions: actions,
-      onChangeView: onChangeView,
+      onChangeView: setView,
       defaultLayouts: DEFAULT_LAYOUTS,
       paginationInfo: paginationInfo
     })]
@@ -6854,6 +6841,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   formatNumber: () => (/* binding */ formatNumber),
 /* harmony export */   uploadToMediaLibrary: () => (/* binding */ uploadToMediaLibrary)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -6913,6 +6901,7 @@ const uploadToMediaLibrary = async ({
   });
   goToTop();
 };
+const formatNumber = number => new Intl.NumberFormat("en-EN").format(number);
 
 /***/ }),
 
