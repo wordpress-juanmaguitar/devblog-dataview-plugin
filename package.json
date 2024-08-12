@@ -5,7 +5,7 @@
   "description": "Example with Admin menu option and dataviews",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@wordpress/dataviews": "^4.0.0"
+    "@wordpress/dataviews": "^4.1.0"
   },
   "scripts": {
     "build": "wp-scripts build",

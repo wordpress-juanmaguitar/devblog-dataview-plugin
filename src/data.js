@@ -21,12 +21,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1710699915484-0b3541dc7265",
     },
+    topics: ["animals"],
     user: {
       first_name: "Clayton",
       last_name: "Chase",
       url: "https://chasemade.com",
     },
-    category: "animals",
   },
   {
     id: "tLRrSMCcdFQ",
@@ -47,12 +47,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723036123319-c47e12bb0f41",
     },
+    topics: ["animals"],
     user: {
       first_name: "Michael",
       last_name: "van Gorkum",
       url: "https://michaelvg.dev",
     },
-    category: "animals",
   },
   {
     id: "Uqi6geijgII",
@@ -73,12 +73,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1597261119513-ee51ac8e4f80",
     },
+    topics: ["animals"],
     user: {
       first_name: "Joshua J.",
       last_name: "Cotten",
       url: "http://instagram.com/longhornjosh",
     },
-    category: "animals",
   },
   {
     id: "E_lIE17suKg",
@@ -99,12 +99,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1478254475213-0bffd484f46c",
     },
+    topics: ["animals"],
     user: {
       first_name: "Atanas",
       last_name: "Teodosiev",
       url: "http://atanasteodosiev.com",
     },
-    category: "animals",
   },
   {
     id: "NKN25UfGfkQ",
@@ -125,12 +125,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1491604612772-6853927639ef",
     },
+    topics: ["animals"],
     user: {
       first_name: "Kieran",
       last_name: "White",
       url: "http://x.com/KieranCWhite",
     },
-    category: "animals",
   },
   {
     id: "E3AE_2KI0tM",
@@ -151,12 +151,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1492235276442-80d2360d7faa",
     },
+    topics: ["animals"],
     user: {
       first_name: "Mitchell",
       last_name: "Orr",
       url: "https://mitchorr.darkroom.tech/",
     },
-    category: "animals",
   },
   {
     id: "5rT7w5CJxQU",
@@ -177,12 +177,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1614183653441-b8cd6d7c516d",
     },
+    topics: ["animals"],
     user: {
       first_name: "Jonathan",
       last_name: "Borba",
       url: "https://jonathanborba.46graus.com/",
     },
-    category: "animals",
   },
   {
     id: "__bngifbHWI",
@@ -203,12 +203,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1509201179970-dbabd9071455",
     },
+    topics: ["animals"],
     user: {
       first_name: "Dev",
       last_name: "Leigh",
       url: "http://www.dlmiles.com",
     },
-    category: "animals",
   },
   {
     id: "kjvnrYpM8Xo",
@@ -229,12 +229,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722682351245-09a9f7faeea4",
     },
+    topics: ["animals"],
     user: {
       first_name: "Dev",
       last_name: "Leigh",
       url: "http://www.dlmiles.com",
     },
-    category: "animals",
   },
   {
     id: "BG3wndmHzt4",
@@ -255,12 +255,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722508771124-fdea3f59c786",
     },
+    topics: ["animals"],
     user: {
       first_name: "Dev",
       last_name: "Leigh",
       url: "http://www.dlmiles.com",
     },
-    category: "animals",
   },
   {
     id: "95F81paVJhU",
@@ -281,12 +281,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722959240956-7919319c8c69",
     },
+    topics: ["animals", "nature", "wallpapers"],
     user: {
       first_name: "Luke",
       last_name: "Scarpino",
       url: "http://lukescarpino.com",
     },
-    category: "animals",
   },
   {
     id: "B0vZS4k8584",
@@ -307,12 +307,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722951712289-fbc8844b9e59",
     },
+    topics: ["animals", "travel", "nature"],
     user: {
       first_name: "Wolfgang",
       last_name: "Hasselmann",
       url: "https://www.youtube.com/@wolfgang_hasselmann/videos",
     },
-    category: "animals",
   },
   {
     id: "XuC_jTWMZ5Q",
@@ -333,12 +333,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722951805884-efaaa44fe487",
     },
+    topics: ["animals", "travel", "nature"],
     user: {
       first_name: "Wolfgang",
       last_name: "Hasselmann",
       url: "https://www.youtube.com/@wolfgang_hasselmann/videos",
     },
-    category: "animals",
   },
   {
     id: "f8jNhevTgIg",
@@ -359,12 +359,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722695036569-c3438ccc2d82",
     },
+    topics: ["animals", "nature"],
     user: {
       first_name: "Bob",
       last_name: "Brewer",
       url: "https://www.flickr.com/photos/brewbottle/albums",
     },
-    category: "animals",
   },
   {
     id: "rrJ1I223UVE",
@@ -385,12 +385,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722695452219-3be4de0c5891",
     },
+    topics: ["animals", "nature"],
     user: {
       first_name: "Bob",
       last_name: "Brewer",
       url: "https://www.flickr.com/photos/brewbottle/albums",
     },
-    category: "animals",
   },
   {
     id: "Q3W6D31yKLc",
@@ -411,12 +411,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722820754434-f61166c3d0c7",
     },
+    topics: ["animals", "nature"],
     user: {
       first_name: "Brandon",
       last_name: "Stoll",
       url: "https://brandonstoll.myportfolio.com/",
     },
-    category: "animals",
   },
   {
     id: "5Yl6d0UX6dU",
@@ -437,12 +437,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722582349592-a5b92189509b",
     },
+    topics: ["animals"],
     user: {
       first_name: "Anastassia",
       last_name: "Anufrieva",
       url: "http://instagram.com/ouroboros_pyrography",
     },
-    category: "animals",
   },
   {
     id: "gjo9ad-8arA",
@@ -463,12 +463,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722378459520-6609d4e3ad81",
     },
+    topics: ["animals", "nature"],
     user: {
       first_name: "Alexander",
       last_name: "Kovalev",
       url: "https://unsplash.com/@alkomosh",
     },
-    category: "animals",
   },
   {
     id: "DH_u2aV3nGM",
@@ -489,12 +489,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1509233725247-49e657c54213",
     },
+    topics: ["nature"],
     user: {
       first_name: "Matthew",
       last_name: "Brodeur",
       url: "https://www.brodeur.nyc/",
     },
-    category: "nature",
   },
   {
     id: "BrGj9UJV1A8",
@@ -515,12 +515,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1621270689907-71bef1d73ac3",
     },
+    topics: ["nature"],
     user: {
       first_name: "Susan",
       last_name: "Wilkinson",
       url: "https://creativemarket.com/Susan_Wilkinson",
     },
-    category: "nature",
   },
   {
     id: "ed01m0a8nbQ",
@@ -541,12 +541,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1656772710810-677f691cc688",
     },
+    topics: ["nature"],
     user: {
       first_name: "Hans",
       last_name: "Isaacson",
       url: "http://HansIsaacson.com",
     },
-    category: "nature",
   },
   {
     id: "UFWz8_9uWX0",
@@ -567,12 +567,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1636579836886-a72170e0af8c",
     },
+    topics: ["textures-patterns", "nature", "color-of-water", "wallpapers"],
     user: {
       first_name: "Hans",
       last_name: "Isaacson",
       url: "http://HansIsaacson.com",
     },
-    category: "nature",
   },
   {
     id: "MtRmdlbKYVA",
@@ -593,12 +593,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1561594592-d4b0e1201a58",
     },
+    topics: ["nature", "macro-moments"],
     user: {
       first_name: "Alfred",
       last_name: "Schrock",
       url: "http://www.PureGeorgiaPhotography.com",
     },
-    category: "nature",
   },
   {
     id: "mx-OsvPdyV0",
@@ -619,12 +619,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1665055651766-589f7d7216b2",
     },
+    topics: ["nature"],
     user: {
       first_name: "Milana",
       last_name: "Jovanov",
       url: "http://instagram.com/milana_jovanov",
     },
-    category: "nature",
   },
   {
     id: "LqvskIMsv3I",
@@ -645,12 +645,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1653833369590-a4b48b4a61c4",
     },
+    topics: ["nature", "textures-patterns", "wallpapers"],
     user: {
       first_name: "Kevin",
       last_name: "Wang",
       url: "https://www.paypal.me/kw829",
     },
-    category: "nature",
   },
   {
     id: "2FAzeq8AagU",
@@ -671,12 +671,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1721401919022-6c12feae074e",
     },
+    topics: ["nature", "wallpapers"],
     user: {
       first_name: "Gaku",
       last_name: "Suyama",
       url: "http://x.com/PONPON_IKEDA",
     },
-    category: "nature",
   },
   {
     id: "coM7mp3tQwA",
@@ -698,12 +698,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723069438273-bc04863b620b",
     },
+    topics: ["nature", "wallpapers"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "nature",
   },
   {
     id: "R7_waYxH96Y",
@@ -724,12 +724,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723069866032-69a98da922b8",
     },
+    topics: ["nature", "wallpapers"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "nature",
   },
   {
     id: "mwHqSR4Lgyc",
@@ -751,12 +751,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723069438473-f34d54c8ec2c",
     },
+    topics: ["nature", "wallpapers"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "nature",
   },
   {
     id: "K_jVStI1PjM",
@@ -777,12 +777,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723069407668-6991e6f54d83",
     },
+    topics: ["nature", "travel", "wallpapers"],
     user: {
       first_name: "Slava",
       last_name: "Auchynnikau",
       url: "http://instagram.com/auchynnikau",
     },
-    category: "nature",
   },
   {
     id: "xejoOeiInZI",
@@ -803,12 +803,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723065456702-c4353e92e905",
     },
+    topics: ["experimental", "nature", "spirituality", "travel", "wallpapers"],
     user: {
       first_name: "Slava",
       last_name: "Auchynnikau",
       url: "http://instagram.com/auchynnikau",
     },
-    category: "nature",
   },
   {
     id: "t51VWizdGqY",
@@ -829,12 +829,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722973893256-85f1e22dc770",
     },
+    topics: ["spirituality", "travel", "nature", "wallpapers"],
     user: {
       first_name: "Marek",
       last_name: "Piwnicki",
       url: "https://marpiwnicki.github.io",
     },
-    category: "travel",
   },
   {
     id: "vJJ5PtWymSY",
@@ -855,12 +855,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723011032817-3d047ef8665c",
     },
+    topics: ["nature", "wallpapers"],
     user: {
       first_name: "Alexey",
       last_name: "Elfimov",
       url: "http://instagram.com/ikocs",
     },
-    category: "nature",
   },
   {
     id: "mY8Lt8cqOiI",
@@ -881,12 +881,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723011032825-4980449e6ed2",
     },
+    topics: ["nature"],
     user: {
       first_name: "Alexey",
       last_name: "Elfimov",
       url: "http://instagram.com/ikocs",
     },
-    category: "nature",
   },
   {
     id: "-joBIdpX04s",
@@ -907,12 +907,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1623588751457-abc09c443963",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Vadim",
       last_name: "Berg",
       url: "http://instagram.com/bergvadi",
     },
-    category: "street-photography",
   },
   {
     id: "TGXbKfKnZT4",
@@ -933,12 +933,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1710198693960-b96873111966",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Leon",
       last_name: "Andov",
       url: "https://www.instagram.com/lando.gc25/",
     },
-    category: "street-photography",
   },
   {
     id: "WIu1J88iHiw",
@@ -960,12 +960,18 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722973893238-b4de0300f4f0",
     },
+    topics: [
+      "spirituality",
+      "street-photography",
+      "textures-patterns",
+      "travel",
+      "wallpapers",
+    ],
     user: {
       first_name: "Marek",
       last_name: "Piwnicki",
       url: "https://marpiwnicki.github.io",
     },
-    category: "street-photography",
   },
   {
     id: "uZGIJYm-j7c",
@@ -986,12 +992,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723101174263-34ecf3edde21",
     },
+    topics: ["experimental", "street-photography"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "street-photography",
   },
   {
     id: "PW-f5Xlj90M",
@@ -1012,12 +1018,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723101173796-fdd7de2a44f5",
     },
+    topics: ["experimental", "street-photography"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "street-photography",
   },
   {
     id: "PcI8S1uYZFM",
@@ -1038,12 +1044,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723101173867-02c62064579f",
     },
+    topics: ["experimental", "street-photography"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "street-photography",
   },
   {
     id: "PXWkkjufi-k",
@@ -1064,12 +1070,20 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723078865094-a7cb69944d06",
     },
+    topics: [
+      "architecture-interior",
+      "business-work",
+      "spirituality",
+      "street-photography",
+      "textures-patterns",
+      "travel",
+      "wallpapers",
+    ],
     user: {
       first_name: "Dominic Kurniawan",
       last_name: "Suryaputra",
       url: "http://instagram.com/dominicsuryaputra",
     },
-    category: "street-photography",
   },
   {
     id: "x0EvEPpordo",
@@ -1090,12 +1104,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723027094512-60b950f0d292",
     },
+    topics: ["people", "street-photography"],
     user: {
       first_name: "Evgeny",
       last_name: "Matveev",
       url: "http://instagram.com/eugene_rus",
     },
-    category: "street-photography",
   },
   {
     id: "5INCCz5sczs",
@@ -1116,12 +1130,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722865166916-ce06576ee1ce",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Nguyen Phan",
       last_name: "Nam Anh",
       url: "http://instagram.com/dying.apricity",
     },
-    category: "street-photography",
   },
   {
     id: "qM6lj4anPN0",
@@ -1142,12 +1156,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722865167451-c51aff93b69b",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Nguyen Phan",
       last_name: "Nam Anh",
       url: "http://instagram.com/dying.apricity",
     },
-    category: "street-photography",
   },
   {
     id: "g0tFd1oB2sM",
@@ -1168,12 +1182,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722865167113-7a03e9f032c8",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Nguyen Phan",
       last_name: "Nam Anh",
       url: "http://instagram.com/dying.apricity",
     },
-    category: "street-photography",
   },
   {
     id: "bqccHJ6RdCs",
@@ -1194,12 +1208,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722865142814-2c0c3368a548",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Nguyen Phan",
       last_name: "Nam Anh",
       url: "http://instagram.com/dying.apricity",
     },
-    category: "street-photography",
   },
   {
     id: "ZmXB3D5Aey0",
@@ -1220,12 +1234,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1715691884702-e58024615493",
     },
+    topics: ["street-photography", "sports", "film"],
     user: {
       first_name: "Nina",
       last_name: "Boshoven",
       url: "http://instagram.com/ninaboshoven",
     },
-    category: "street-photography",
   },
   {
     id: "sEulLK7Z4fY",
@@ -1246,12 +1260,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1720127470427-aee737d831d0",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "Chu",
       last_name: "CHU",
       url: "http://instagram.com/chu_sin_chau",
     },
-    category: "street-photography",
   },
   {
     id: "f9FzXgbT81M",
@@ -1272,12 +1286,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723041456019-3074f1431cf2",
     },
+    topics: ["street-photography"],
     user: {
       first_name: "HANVIN",
       last_name: "CHEONG",
       url: "https://instagram.com/hkt311_",
     },
-    category: "street-photography",
   },
   {
     id: "yToAgLYV71Q",
@@ -1298,12 +1312,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722928852010-5ebdd0ed568f",
     },
+    topics: ["film", "people", "spirituality", "street-photography", "travel"],
     user: {
       first_name: "Haotian",
       last_name: "Zheng",
       url: "https://haotianzheng.com/",
     },
-    category: "street-photography",
   },
   {
     id: "6_4MVJadrhk",
@@ -1324,12 +1338,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723013082698-9401b84c2ab6",
     },
+    topics: ["architecture-interior", "street-photography"],
     user: {
       first_name: "Ryunosuke",
       last_name: "Kikuno",
       url: "https://www.ryunosukekikuno.com/",
     },
-    category: "street-photography",
   },
   {
     id: "nb9iaqGA-9c",
@@ -1350,12 +1364,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723027201403-b6345db41166",
     },
+    topics: ["architecture-interior", "people", "street-photography", "travel"],
     user: {
       first_name: "Evgeny",
       last_name: "Matveev",
       url: "http://instagram.com/eugene_rus",
     },
-    category: "street-photography",
   },
   {
     id: "mwi9XQ7zET0",
@@ -1376,12 +1390,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1717014501220-e44e1e2d72c8",
     },
+    topics: ["travel", "film", "street-photography"],
     user: {
       first_name: "Mathilde",
       last_name: "Hugdal",
       url: "https://gmathilde.myportfolio.com/",
     },
-    category: "travel",
   },
   {
     id: "X_xw9qFG1PU",
@@ -1402,12 +1416,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722958025185-14f07b55d613",
     },
+    topics: ["sports", "travel"],
     user: {
       first_name: "Yuliya",
       last_name: "Matuzava",
       url: "http://matuzava.photos",
     },
-    category: "travel",
   },
   {
     id: "r8wHlAHwtx0",
@@ -1428,12 +1442,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722218530961-10d93f8a5cff",
     },
+    topics: ["travel"],
     user: {
       first_name: "Jose",
       last_name: "Figueroa",
       url: "https://www.behance.net/josefigueroa29",
     },
-    category: "travel",
   },
   {
     id: "RM1LyHAhKI0",
@@ -1455,12 +1469,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723042292152-00a9b10a44d0",
     },
+    topics: ["architecture-interior", "travel"],
     user: {
       first_name: "Gaku",
       last_name: "Suyama",
       url: "http://x.com/PONPON_IKEDA",
     },
-    category: "travel",
   },
   {
     id: "MtZYeKxwREE",
@@ -1481,12 +1495,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723121245386-b2137fced28f",
     },
+    topics: ["travel"],
     user: {
       first_name: "Francesco",
       last_name: "Ungaro",
       url: "http://www.francescoungaro.it",
     },
-    category: "travel",
   },
   {
     id: "I15VDbkxIeo",
@@ -1507,12 +1521,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723097132733-29023a8f19f8",
     },
+    topics: ["architecture-interior", "street-photography", "travel"],
     user: {
       first_name: "Takashi",
       last_name: "Miyazaki",
       url: "https://miyatankun.wixsite.com/miyatankun-photograp",
     },
-    category: "street-photography",
   },
   {
     id: "y4L_EWpz4P8",
@@ -1533,12 +1547,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722707740626-57be242ede9b",
     },
+    topics: ["travel", "architecture-interior", "wallpapers"],
     user: {
       first_name: "Tuan",
       last_name: "P.",
       url: "http://instagram.com/tuanzzzz",
     },
-    category: "travel",
   },
   {
     id: "iDoqpWNMjlw",
@@ -1559,12 +1573,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723020495814-dc3f52a67ad6",
     },
+    topics: ["travel"],
     user: {
       first_name: "benjamin",
       last_name: "chambon",
       url: "http://instagram.com/benriquo",
     },
-    category: "travel",
   },
   {
     id: "Rxo1lGGptyM",
@@ -1585,12 +1599,20 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723078746948-33e8e2d018eb",
     },
+    topics: [
+      "architecture-interior",
+      "archival",
+      "spirituality",
+      "street-photography",
+      "textures-patterns",
+      "travel",
+      "wallpapers",
+    ],
     user: {
       first_name: "Dominic Kurniawan",
       last_name: "Suryaputra",
       url: "http://instagram.com/dominicsuryaputra",
     },
-    category: "street-photography",
   },
   {
     id: "7P23-H_W5_8",
@@ -1612,12 +1634,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723065456699-dcbf1f55c974",
     },
+    topics: ["experimental", "nature", "spirituality", "travel", "wallpapers"],
     user: {
       first_name: "Slava",
       last_name: "Auchynnikau",
       url: "http://instagram.com/auchynnikau",
     },
-    category: "nature",
   },
   {
     id: "t51VWizdGqY",
@@ -1638,12 +1660,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1722973893256-85f1e22dc770",
     },
+    topics: ["spirituality", "travel", "nature", "wallpapers"],
     user: {
       first_name: "Marek",
       last_name: "Piwnicki",
       url: "https://marpiwnicki.github.io",
     },
-    category: "travel",
   },
   {
     id: "ohUHbC5X_iU",
@@ -1664,12 +1686,18 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723031821045-4387f65e5251",
     },
+    topics: [
+      "architecture-interior",
+      "film",
+      "spirituality",
+      "street-photography",
+      "travel",
+    ],
     user: {
       first_name: "Artists",
       last_name: "Eyes",
       url: "http://artistseyes.nl",
     },
-    category: "street-photography",
   },
   {
     id: "k5DG1cCtCFo",
@@ -1690,12 +1718,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723031822873-c5e21a878cbd",
     },
+    topics: ["people", "travel", "architecture-interior", "film"],
     user: {
       first_name: "Artists",
       last_name: "Eyes",
       url: "http://artistseyes.nl",
     },
-    category: "travel",
   },
   {
     id: "qz5Fww4nzfU",
@@ -1716,12 +1744,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723029799103-b97ebbb796a9",
     },
+    topics: ["travel"],
     user: {
       first_name: "Junior",
       last_name: null,
       url: "https://www.instagram.com/daybydayjunior",
     },
-    category: "travel",
   },
   {
     id: "EeqgaNTbHeQ",
@@ -1742,12 +1770,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1723008496138-16c36176e038",
     },
+    topics: ["travel"],
     user: {
       first_name: "JinHui",
       last_name: "CHEN",
       url: "https://www.yuque.com/jimmydaddy",
     },
-    category: "travel",
   },
   {
     id: "lRq0kAQ_qr4",
@@ -1768,12 +1796,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1540280369237-dea08361593a",
     },
+    topics: ["travel", "nature"],
     user: {
       first_name: "Sidhra",
       last_name: "Ibrahim",
       url: "http://instagram.com/Sidhra.mv",
     },
-    category: "travel",
   },
   {
     id: "-3WBPZgp9dQ",
@@ -1794,12 +1822,12 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1526631011044-3fae1501ec7c",
     },
+    topics: ["health", "travel"],
     user: {
       first_name: "Oliver",
       last_name: "Sjöström",
       url: "https://ollivves.com",
     },
-    category: "travel",
   },
   {
     id: "4VJtrLIi5_c",
@@ -1820,15 +1848,85 @@ export const PHOTOS = [
       small_s3:
         "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1567115702188-ea12a355f14a",
     },
+    topics: ["travel"],
     user: {
       first_name: "Alonso",
       last_name: "Reyes",
       url: "http://alonsoreyesphotography.com",
     },
-    category: "travel",
   },
 ];
 
+export const TOPICS = [
+  {
+    value: "travel",
+    label: "Travel",
+  },
+  {
+    value: "health",
+    label: "Health",
+  },
+  {
+    value: "nature",
+    label: "Nature",
+  },
+  {
+    value: "people",
+    label: "People",
+  },
+  {
+    value: "architecture-interior",
+    label: "Architecture interior",
+  },
+  {
+    value: "film",
+    label: "Film",
+  },
+  {
+    value: "spirituality",
+    label: "Spirituality",
+  },
+  {
+    value: "street-photography",
+    label: "Street photography",
+  },
+  {
+    value: "wallpapers",
+    label: "Wallpapers",
+  },
+  {
+    value: "experimental",
+    label: "Experimental",
+  },
+  {
+    value: "archival",
+    label: "Archival",
+  },
+  {
+    value: "textures-patterns",
+    label: "Textures patterns",
+  },
+  {
+    value: "sports",
+    label: "Sports",
+  },
+  {
+    value: "business-work",
+    label: "Business work",
+  },
+  {
+    value: "macro-moments",
+    label: "Macro moments",
+  },
+  {
+    value: "color-of-water",
+    label: "Color of-water",
+  },
+  {
+    value: "animals",
+    label: "Animals",
+  },
+];
 export const CATEGORIES = [
   {
     value: "travel",

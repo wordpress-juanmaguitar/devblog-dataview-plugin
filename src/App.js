@@ -6,7 +6,7 @@ import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
 import "./style.css";
-import { PHOTOS, CATEGORIES } from "./data";
+import { PHOTOS, TOPICS } from "./data";
 
 const primaryField = "id";
 const mediaField = "img_src";
@@ -37,7 +37,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
   const { createNotice } = noticeOperations;
 
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isUploadingItems, setIsUploadingItems] = useState([]);
 
   const [paginationInfo, setPaginationInfo] = useState({
     totalItems: 0,
@@ -81,16 +81,20 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       enableGlobalSearch: true,
     },
     {
-      id: "category",
-      label: "Category",
-      elements: CATEGORIES,
+      id: "topics",
+      label: "Topics",
+      elements: TOPICS,
       render: ({ item }) => {
         return (
-          <span class="category_photo_item">{item.category.toUpperCase()}</span>
+          <div class="topic_photos">
+            {item.topics.map((topic) => (
+              <span class="topic_photo_item">{topic.toUpperCase()}</span>
+            ))}
+          </div>
         );
       },
       filterBy: {
-        operators: ["isAny"],
+        operators: ["isAny", "isNone", "isAll", "isNotAll"],
       },
       enableSorting: false,
     },
@@ -115,12 +119,15 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     setPaginationInfo(paginationInfo);
   };
 
-  const onSuccessMediaUpload = ({ slug }) => {
-    setIsLoading(false);
+  const onSuccessMediaUpload = ({ title }) => {
+    setIsUploadingItems((prevIsUploadingItems) =>
+      prevIsUploadingItems.filter((slugLoading) => slugLoading !== title)
+    );
+
     createNotice({
       status: "success",
-      content: __(`${slug}.jpg succesfully uploaded to Media Library!`),
-      explicitDismiss: true,
+      content: __(`${title}.jpg succesfully uploaded to Media Library!`),
+      isDismissible: true,
     });
   };
 
@@ -128,8 +135,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     createNotice({
       status: "error",
       content: __("An error occurred!"),
-      type: "snackbar",
-      explicitDismiss: true,
+      isDismissible: true,
     });
   };
 
@@ -139,12 +145,18 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       label: "Upload Media",
       isPrimary: true,
       icon: "upload",
-      callback: ([image]) => {
-        setIsLoading(true);
-        uploadToMediaLibrary({
-          image,
-          onSuccessMediaUpload,
-          onErrorMediaUpload,
+      supportsBulk: true,
+      callback: (images) => {
+        images.forEach((image) => {
+          setIsUploadingItems((prevIsUploadingItems) => [
+            ...prevIsUploadingItems,
+            image.slug,
+          ]);
+          uploadToMediaLibrary({
+            image,
+            onSuccessMediaUpload,
+            onErrorMediaUpload,
+          });
         });
       },
     },
@@ -157,10 +169,9 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       },
     },
   ];
-
   return (
     <>
-      {isLoading && <Spinner />}
+      {!!isUploadingItems.length && <Spinner />}
       {noticeUI}
       <DataViews
         data={data}
