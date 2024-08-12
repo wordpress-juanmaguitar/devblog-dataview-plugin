@@ -5215,7 +5215,9 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
       isDismissible: true
     });
   };
-  const onErrorMediaUpload = () => {
+  const onErrorMediaUpload = error => {
+    setIsUploadingItems([]);
+    console.log(error);
     createNotice({
       status: "error",
       content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("An error occurred!"),
@@ -6906,7 +6908,7 @@ const uploadToMediaLibrary = async ({
       onSuccessMediaUpload(fileObj);
     },
     onError: error => {
-      onErrorMediaUpload();
+      onErrorMediaUpload(error);
     }
   });
   goToTop();
