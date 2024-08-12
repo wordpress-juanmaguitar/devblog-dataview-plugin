@@ -1179,5 +1179,17 @@
   background: white;
 }
 
+#add-media-from-third-party-service .topic_photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#add-media-from-third-party-service .topic_photo_item {
+  background-color: grey;
+  color: white;
+  padding: 2px;
+  margin: 2px;
+}
+
 
 /*# sourceMappingURL=style-index.css.map*/

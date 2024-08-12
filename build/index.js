@@ -5156,6 +5156,17 @@ const FIELDS = [{
   id: "topics",
   label: "Topics",
   elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
+  render: ({
+    item
+  }) => {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      class: "topic_photos",
+      children: item.topics.map(topic => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+        class: "topic_photo_item",
+        children: topic.toUpperCase()
+      }))
+    });
+  },
   filterBy: {
     operators: ["isAny", "isNone", "isAll", "isNotAll"]
   },
@@ -5219,7 +5230,7 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
     label: "Upload Media",
     isPrimary: true,
     icon: "upload",
-    // supportsBulk: true,
+    supportsBulk: true,
     callback: images => {
       images.forEach(image => {
         setIsUploadingItems(prevIsUploadingItems => [...prevIsUploadingItems, image.slug]);
