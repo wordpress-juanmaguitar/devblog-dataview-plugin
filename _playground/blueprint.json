@@ -11,5 +11,13 @@
   "login": true,
   "plugins": [
     "https://github-proxy.com/proxy/?repo=wordpress-juanmaguitar/devblog-dataview-plugin&branch=main"
+  ],
+  "steps": [
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_MEMORY_LIMIT": "512M"
+      }
+    }
   ]
 }
