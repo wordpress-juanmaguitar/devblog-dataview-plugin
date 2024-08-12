@@ -131,7 +131,9 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
     });
   };
 
-  const onErrorMediaUpload = () => {
+  const onErrorMediaUpload = (error) => {
+    setIsUploadingItems([]);
+    console.log(error);
     createNotice({
       status: "error",
       content: __("An error occurred!"),

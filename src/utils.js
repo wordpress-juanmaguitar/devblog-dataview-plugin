@@ -48,7 +48,7 @@ export const uploadToMediaLibrary = async ({
       onSuccessMediaUpload(fileObj);
     },
     onError: (error) => {
-      onErrorMediaUpload();
+      onErrorMediaUpload(error);
     },
   });
 
