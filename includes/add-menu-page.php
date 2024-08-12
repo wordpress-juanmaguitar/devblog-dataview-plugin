@@ -12,9 +12,9 @@ function my_admin_menu() {
 		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
 		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
 		'manage_options',
-		'my-custom-dataview-app',
+		'add-media-from-third-party-service',
 		function () {
-			echo '<h2>Add Media from third party service</h2><div id="my-custom-dataview-app"></div>';
+			echo '<h2>Add Media from third party service</h2><div id="add-media-from-third-party-service"></div>';
 		}
 	);
 }
