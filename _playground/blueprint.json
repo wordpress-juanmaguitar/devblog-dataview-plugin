@@ -10,7 +10,6 @@
   },
   "login": true,
   "plugins": [
-    "wpide",
     "https://github-proxy.com/proxy/?repo=wordpress-juanmaguitar/devblog-dataview-plugin&branch=main"
   ]
 }
