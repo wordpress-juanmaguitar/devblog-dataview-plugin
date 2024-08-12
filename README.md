@@ -1,5 +1,7 @@
 # Dataview Plugin
 
+[![](https://img.shields.io/badge/playground-live%20preview-blue?logo=wordpress)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/wordpress-juanmaguitar/devblog-dataview-plugin/main/_playground/blueprint.json)
+
 An exploration of using the Dataview component inside of a plugin
 
 ## Development
