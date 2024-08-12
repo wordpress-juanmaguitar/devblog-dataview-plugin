@@ -137,7 +137,7 @@ const App = withNotices(({ noticeOperations, noticeUI }) => {
       label: "Upload Media",
       isPrimary: true,
       icon: "upload",
-      // supportsBulk: true,
+      supportsBulk: true,
       callback: (images) => {
         images.forEach((image) => {
           setIsUploadingItems((prevIsUploadingItems) => [
