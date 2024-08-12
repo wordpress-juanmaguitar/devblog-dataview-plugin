@@ -5109,8 +5109,8 @@ const DEFAULT_LAYOUTS = {
   grid: {
     layout: {
       primaryField,
-      mediaField,
-      badgeFields
+      mediaField
+      // badgeFields,
     }
   },
   list: {
