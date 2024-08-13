@@ -65,15 +65,6 @@ const FIELDS = [
     id: "topics",
     label: "Topics",
     elements: TOPICS,
-    render: ({ item }) => {
-      return (
-        <div class="topic_photos">
-          {item.topics.map((topic) => (
-            <span class="topic_photo_item">{topic.toUpperCase()}</span>
-          ))}
-        </div>
-      );
-    },
     filterBy: {
       operators: ["isAny", "isNone", "isAll", "isNotAll"],
     },
