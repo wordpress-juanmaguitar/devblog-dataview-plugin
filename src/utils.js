@@ -45,6 +45,8 @@ export const uploadToMediaLibrary = async ({
       if (isBlobURL(fileObj?.url)) {
         return;
       }
+      // fileObj here is the object of uploaded image as returned by: POST /wp/v2/media
+      // https://developer.wordpress.org/rest-api/reference/media/#schema
       onSuccessMediaUpload(fileObj);
     },
     onError: (error) => {

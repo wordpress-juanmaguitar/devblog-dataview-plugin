@@ -10,7 +10,6 @@ import { PHOTOS, TOPICS } from "./data";
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["topics"];
 
 const DEFAULT_LAYOUTS = {
   table: {
@@ -22,7 +21,6 @@ const DEFAULT_LAYOUTS = {
     layout: {
       primaryField,
       mediaField,
-      // badgeFields,
     },
   },
   list: {
