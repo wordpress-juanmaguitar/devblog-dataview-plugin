@@ -5099,7 +5099,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const primaryField = "id";
 const mediaField = "img_src";
-const badgeFields = ["topics"];
 const DEFAULT_LAYOUTS = {
   table: {
     layout: {
@@ -5107,13 +5106,6 @@ const DEFAULT_LAYOUTS = {
     }
   },
   grid: {
-    layout: {
-      primaryField,
-      mediaField
-      // badgeFields,
-    }
-  },
-  list: {
     layout: {
       primaryField,
       mediaField
@@ -6885,6 +6877,8 @@ const uploadToMediaLibrary = async ({
       if (isBlobURL(fileObj?.url)) {
         return;
       }
+      // fileObj here is the object of uploaded image as returned by: POST /wp/v2/media
+      // https://developer.wordpress.org/rest-api/reference/media/#schema
       onSuccessMediaUpload(fileObj);
     },
     onError: error => {

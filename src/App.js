@@ -23,12 +23,6 @@ const DEFAULT_LAYOUTS = {
       mediaField,
     },
   },
-  list: {
-    layout: {
-      primaryField,
-      mediaField,
-    },
-  },
 };
 
 const FIELDS = [
