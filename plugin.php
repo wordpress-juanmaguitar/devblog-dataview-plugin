@@ -13,20 +13,64 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Setup.
-if ( ! defined( 'PLUGIN_DIR' ) ) {
-	define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-}
-if ( ! defined( 'PLUGIN_FILE' ) ) {
-	define( 'PLUGIN_FILE', __FILE__ );
+add_action( 'admin_menu', 'devblog_dataviews_admin_menu' );
+
+/**
+ * Creates a new Media subsection and set the HTML for it.
+ */
+function devblog_dataviews_admin_menu() {
+	add_media_page(
+		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
+		__( 'Add Media from third party service', 'dev-blog-dataviews-example' ),
+		'manage_options',
+		'add-media-from-third-party-service',
+		function () {
+			printf(
+				'<h2>%s</h2><div id="add-media-from-third-party-service"></div>',
+				esc_html__( 'Add Media from third party service', 'dev-blog-dataviews-example' )
+			);
+		}
+	);
 }
 
-if ( ! defined( 'PLUGIN_DIR_URL' ) ) {
-	define( 'PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+add_action( 'admin_enqueue_scripts', 'devblog_dataviews_admin_enqueue_assets' );
+
+/**
+ * Enqueues JS and CSS files for our custom Media subsection page.
+ *
+ * @param string $hook_suffix The current admin page.
+ */
+function devblog_dataviews_admin_enqueue_assets( $hook_suffix ) {
+	// Load only on ?page=my-custom-dataview-app.
+	if ( 'media_page_add-media-from-third-party-service' !== $hook_suffix ) {
+		return;
+	}
+
+	$dir = plugin_dir_path( __FILE__ );
+	$url = plugin_dir_url( __FILE__ );
+
+	$asset_file = $dir . 'build/index.asset.php';
+
+	if ( ! file_exists( $asset_file ) ) {
+		return;
+	}
+
+	$asset = include $asset_file;
+
+	wp_enqueue_script(
+		'devblog-dataview-script',
+		$url . 'build/index.js',
+		$asset['dependencies'],
+		$asset['version'],
+		array(
+			'in_footer' => true,
+		)
+	);
+
+	wp_enqueue_style(
+		'devblog-dataview-styles',
+		$url . 'build/style-index.css',
+		array( 'wp-components' ),
+		$asset['version'],
+	);
 }
-
-require_once PLUGIN_DIR . 'includes/add-menu-page.php';
-require_once PLUGIN_DIR . 'includes/load-custom-admin-scripts.php';
-
-add_action( 'admin_menu', 'DevBlogDataviewsExample\my_admin_menu' );
-add_action( 'admin_enqueue_scripts', 'DevBlogDataviewsExample\load_custom_wp_admin_scripts' );
