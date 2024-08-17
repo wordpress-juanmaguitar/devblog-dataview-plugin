@@ -5097,6 +5097,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const TOPICS = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.getTopics)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS);
 const primaryField = "id";
 const mediaField = "img_src";
 const DEFAULT_LAYOUTS = {
@@ -5147,7 +5148,7 @@ const FIELDS = [{
 }, {
   id: "topics",
   label: "Topics",
-  elements: _data__WEBPACK_IMPORTED_MODULE_5__.TOPICS,
+  elements: TOPICS,
   render: ({
     item
   }) => {
@@ -5266,7 +5267,6 @@ const App = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withNotices)((
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CATEGORIES: () => (/* binding */ CATEGORIES),
 /* harmony export */   PHOTOS: () => (/* binding */ PHOTOS),
 /* harmony export */   TOPICS: () => (/* binding */ TOPICS)
 /* harmony export */ });
@@ -6775,19 +6775,6 @@ const TOPICS = [{
   value: "animals",
   label: "Animals"
 }];
-const CATEGORIES = [{
-  value: "travel",
-  label: "Travel"
-}, {
-  value: "nature",
-  label: "Nature"
-}, {
-  value: "street-photography",
-  label: "Street photography"
-}, {
-  value: "animals",
-  label: "Animals"
-}];
 
 /***/ }),
 
@@ -6826,6 +6813,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getTopics: () => (/* binding */ getTopics),
 /* harmony export */   uploadToMediaLibrary: () => (/* binding */ uploadToMediaLibrary)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -6841,9 +6829,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * Helper function to convert image URL to File object
- * @param {*} url
- * @param {*} name
- * @returns
+ *
+ * @param {Object} image - The image object containing the URL and other properties.
+ * @returns {Promise<File>} - A Promise that resolves to a File object representing the image.
  */
 const urlToFileObject = async image => {
   const urlImage = image.urls.raw;
@@ -6856,15 +6844,35 @@ const urlToFileObject = async image => {
   });
   return file;
 };
+
+/**
+ * Checks if a given URL is a blob URL.
+ *
+ * @param {string} url - The URL to check.
+ * @returns {boolean} - Returns true if the URL is a blob URL, false otherwise.
+ */
 const isBlobURL = url => {
   if (!url || !url.indexOf) {
     return false;
   }
   return url.indexOf("blob:") === 0;
 };
+
+/**
+ * Scrolls the window to the top.
+ */
 const goToTop = () => {
   window.scrollTo(0, 0);
 };
+
+/**
+ * Uploads an image to the media library.
+ * @param {Object} options - The options for uploading the image.
+ * @param {string} options.image - The image to upload.
+ * @param {Function} options.onSuccessMediaUpload - The callback function to be called on successful media upload.
+ * @param {Function} options.onErrorMediaUpload - The callback function to be called on media upload error.
+ * @returns {void}
+ */
 const uploadToMediaLibrary = async ({
   image,
   onSuccessMediaUpload,
@@ -6886,6 +6894,27 @@ const uploadToMediaLibrary = async ({
     }
   });
   goToTop();
+};
+
+/**
+ * Retrieves the unique topics from an array of photos.
+ *
+ * @param {Array} photos - The array of photos.
+ * @returns {Array} - An array of objects containing the label and value of each topic.
+ * @example
+ *  Call - getTopics([{ topics: ["nature", "water"] }, { topics: ["nature", "mountain"] }]);
+ *  Returns - [{ label: "Nature", value: "nature" }, { label: "Water", value: "water" }, { label: "Mountain", value: "mountain" }]
+ */
+const getTopics = photos => {
+  const topics = photos.reduce((acc, photo) => {
+    return acc.concat(photo.topics);
+  }, []);
+  return [...new Set(topics)].map(topic => {
+    return {
+      label: topic.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase()),
+      value: topic
+    };
+  });
 };
 
 /***/ }),

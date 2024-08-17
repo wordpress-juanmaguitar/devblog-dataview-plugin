@@ -1901,21 +1901,3 @@ export const TOPICS = [
     label: "Animals",
   },
 ];
-export const CATEGORIES = [
-  {
-    value: "travel",
-    label: "Travel",
-  },
-  {
-    value: "nature",
-    label: "Nature",
-  },
-  {
-    value: "street-photography",
-    label: "Street photography",
-  },
-  {
-    value: "animals",
-    label: "Animals",
-  },
-];

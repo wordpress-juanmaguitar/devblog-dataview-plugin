@@ -1,12 +1,13 @@
 import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState, useMemo } from "@wordpress/element";
-import { uploadToMediaLibrary } from "./utils";
+import { uploadToMediaLibrary, getTopics } from "./utils";
 import { withNotices } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
 import "./style.css";
-import { PHOTOS, TOPICS } from "./data";
+import { PHOTOS } from "./data";
+const TOPICS = getTopics(PHOTOS);
 
 const primaryField = "id";
 const mediaField = "img_src";

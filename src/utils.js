@@ -7,9 +7,9 @@ import { uploadMedia } from "@wordpress/media-utils";
 
 /**
  * Helper function to convert image URL to File object
- * @param {*} url
- * @param {*} name
- * @returns
+ *
+ * @param {Object} image - The image object containing the URL and other properties.
+ * @returns {Promise<File>} - A Promise that resolves to a File object representing the image.
  */
 const urlToFileObject = async (image) => {
   const urlImage = image.urls.raw;
@@ -21,6 +21,12 @@ const urlToFileObject = async (image) => {
   return file;
 };
 
+/**
+ * Checks if a given URL is a blob URL.
+ *
+ * @param {string} url - The URL to check.
+ * @returns {boolean} - Returns true if the URL is a blob URL, false otherwise.
+ */
 const isBlobURL = (url) => {
   if (!url || !url.indexOf) {
     return false;
@@ -28,10 +34,21 @@ const isBlobURL = (url) => {
   return url.indexOf("blob:") === 0;
 };
 
+/**
+ * Scrolls the window to the top.
+ */
 const goToTop = () => {
   window.scrollTo(0, 0);
 };
 
+/**
+ * Uploads an image to the media library.
+ * @param {Object} options - The options for uploading the image.
+ * @param {string} options.image - The image to upload.
+ * @param {Function} options.onSuccessMediaUpload - The callback function to be called on successful media upload.
+ * @param {Function} options.onErrorMediaUpload - The callback function to be called on media upload error.
+ * @returns {void}
+ */
 export const uploadToMediaLibrary = async ({
   image,
   onSuccessMediaUpload,
@@ -55,4 +72,25 @@ export const uploadToMediaLibrary = async ({
   });
 
   goToTop();
+};
+
+/**
+ * Retrieves the unique topics from an array of photos.
+ *
+ * @param {Array} photos - The array of photos.
+ * @returns {Array} - An array of objects containing the label and value of each topic.
+ * @example
+ *  Call - getTopics([{ topics: ["nature", "water"] }, { topics: ["nature", "mountain"] }]);
+ *  Returns - [{ label: "Nature", value: "nature" }, { label: "Water", value: "water" }, { label: "Mountain", value: "mountain" }]
+ */
+export const getTopics = (photos) => {
+  const topics = photos.reduce((acc, photo) => {
+    return acc.concat(photo.topics);
+  }, []);
+  return [...new Set(topics)].map((topic) => {
+    return {
+      label: topic.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()),
+      value: topic,
+    };
+  });
 };
