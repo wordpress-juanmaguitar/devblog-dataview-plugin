@@ -5097,7 +5097,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const TOPICS = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.getTopics)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS);
 const primaryField = "id";
 const mediaField = "img_src";
 const DEFAULT_LAYOUTS = {
@@ -5114,8 +5113,8 @@ const DEFAULT_LAYOUTS = {
   }
 };
 const FIELDS = [{
-  label: "Image",
   id: "img_src",
+  label: "Image",
   render: ({
     item
   }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
@@ -5128,8 +5127,8 @@ const FIELDS = [{
   label: "ID",
   enableGlobalSearch: true
 }, {
-  label: "Author",
   id: "author",
+  label: "Author",
   getValue: ({
     item
   }) => `${item.user.first_name} ${item.user.last_name}`,
@@ -5148,7 +5147,7 @@ const FIELDS = [{
 }, {
   id: "topics",
   label: "Topics",
-  elements: TOPICS,
+  elements: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.getTopicsElementsFormat)(_data__WEBPACK_IMPORTED_MODULE_5__.PHOTOS),
   render: ({
     item
   }) => {
@@ -6813,7 +6812,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getTopics: () => (/* binding */ getTopics),
+/* harmony export */   getTopicsElementsFormat: () => (/* binding */ getTopicsElementsFormat),
 /* harmony export */   uploadToMediaLibrary: () => (/* binding */ uploadToMediaLibrary)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -6897,15 +6896,18 @@ const uploadToMediaLibrary = async ({
 };
 
 /**
- * Retrieves the unique topics from an array of photos.
+ * Retrieves the unique topics from an array of photos
+ * and returns them in the format expected
+ * by the "elements" property ("field" prop) of the Dataviews component.
  *
  * @param {Array} photos - The array of photos.
  * @returns {Array} - An array of objects containing the label and value of each topic.
  * @example
  *  Call - getTopics([{ topics: ["nature", "water"] }, { topics: ["nature", "mountain"] }]);
  *  Returns - [{ label: "Nature", value: "nature" }, { label: "Water", value: "water" }, { label: "Mountain", value: "mountain" }]
+ * @link https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dataviews/#fields-elements
  */
-const getTopics = photos => {
+const getTopicsElementsFormat = photos => {
   const topics = photos.reduce((acc, photo) => {
     return acc.concat(photo.topics);
   }, []);

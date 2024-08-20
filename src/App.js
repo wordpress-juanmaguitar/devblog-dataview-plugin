@@ -1,13 +1,12 @@
 import { DataViews, filterSortAndPaginate } from "@wordpress/dataviews";
 import { useState, useMemo } from "@wordpress/element";
-import { uploadToMediaLibrary, getTopics } from "./utils";
+import { uploadToMediaLibrary, getTopicsElementsFormat } from "./utils";
 import { withNotices } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
 import "./style.css";
 import { PHOTOS } from "./data";
-const TOPICS = getTopics(PHOTOS);
 
 const primaryField = "id";
 const mediaField = "img_src";
@@ -28,8 +27,8 @@ const DEFAULT_LAYOUTS = {
 
 const FIELDS = [
   {
-    label: "Image",
     id: "img_src",
+    label: "Image",
     render: ({ item }) => (
       <img alt={item.alt_description} src={item.urls.thumb} />
     ),
@@ -41,8 +40,8 @@ const FIELDS = [
     enableGlobalSearch: true,
   },
   {
-    label: "Author",
     id: "author",
+    label: "Author",
     getValue: ({ item }) => `${item.user.first_name} ${item.user.last_name}`,
     render: ({ item }) => (
       <a target="_blank" href={item.user.url}>
@@ -59,7 +58,7 @@ const FIELDS = [
   {
     id: "topics",
     label: "Topics",
-    elements: TOPICS,
+    elements: getTopicsElementsFormat(PHOTOS),
     render: ({ item }) => {
       return (
         <div class="topic_photos">
