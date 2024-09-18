@@ -5,7 +5,7 @@ import { withNotices } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { Spinner } from "@wordpress/components";
 
-import "./style.css";
+import "./style.scss";
 import { PHOTOS } from "./data";
 
 const primaryField = "id";
